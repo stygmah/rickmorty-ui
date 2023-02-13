@@ -19,16 +19,20 @@ export default function Register() {
   }
 
   const handleLogin = async () => {
-    const result = await signIn('credentials', {
-      redirect: false,
-      email: credentials.email,
-      password: credentials.password,
-    });
-
-    if (result.error) {
-      console.log(result.error);
-    } else {
-      router.push('/');
+    try {
+      const result = await signIn('credentials', {
+        redirect: false,
+        email: credentials.email,
+        password: credentials.password,
+      });
+  
+      if (result.error) {
+        console.log(result.error);
+      } else {
+        router.push('/');
+      }
+    } catch (error) {
+      console.error(error)
     }
   }
 
@@ -45,7 +49,6 @@ export default function Register() {
       const result = await response.json();
       
       if (response.status === 500) {
-        console.log(result.message)
         if(result.message?.includes('email is already in use')) {
           setErrors({...errors, email: 'Email already exists'});
         }
