@@ -1,6 +1,6 @@
-import Card from "@/components/Card";
-import styled from "styled-components";
-import Link from "next/link";
+import Card from '@/components/Card';
+import styled from 'styled-components';
+import Link from 'next/link';
 
 export const Container = styled.div`
   display: flex;

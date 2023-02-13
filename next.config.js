@@ -2,14 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["rickandmortyapi.com"],
+    domains: ['rickandmortyapi.com'],
   },
   compiler: {
     styledComponents: true
   },
-  serverRuntimeConfig: {
-    secret: 'supersecretstring_2023'
-},
 }
 
 module.exports = nextConfig

@@ -4,19 +4,19 @@ const PASSWORD_REGEX = /^(?=.[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 export const validateForm = (credentials) => {
   let newErrors = { email: null, password: null, repeatedPassword: null };
   if (!credentials.email) {
-    newErrors.email = "Email is required";
+    newErrors.email = 'Email is required';
   } else if (!EMAIL_REGEX.test(credentials.email)) {
-    newErrors.email = "Invalid email address";
+    newErrors.email = 'Invalid email address';
   }
   if (!credentials.password) {
-    newErrors.password = "Password is required";
+    newErrors.password = 'Password is required';
   } else if (!PASSWORD_REGEX.test(credentials.password)) {
-    newErrors.password = "Invalid password";
+    newErrors.password = 'Invalid password';
   }
   if (!credentials.repeatedPassword) {
-    newErrors.repeatedPassword = "Please repeat your password";
+    newErrors.repeatedPassword = 'Please repeat your password';
   } else if (credentials.repeatedPassword !== credentials.password) {
-    newErrors.repeatedPassword = "Passwords do not match";
+    newErrors.repeatedPassword = 'Passwords do not match';
   }
   return newErrors;
 };
