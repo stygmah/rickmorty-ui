@@ -1,9 +1,27 @@
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import Head from 'next/head';
 import { Container, LoginCard, FieldContainer, SubmitButton } from '../styles/login.styled';
+import {signIn} from 'next-auth/react';
 
 export default function Login() {
   const router = useRouter();
+  const [credentials, setCredentials] = useState({ email: '', password: '' });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const result = await signIn('credentials', {
+      redirect: false,
+      email: credentials.email,
+      password: credentials.password,
+    });
+    console.log(result)
+    if (result.error) {
+      console.log(result.error);
+    } else {
+      router.push('/');
+    }
+  }
 
   return (
     <>
@@ -16,18 +34,20 @@ export default function Login() {
       <main>
         <Container>
           <LoginCard>
-            <h3>Login</h3>
-            <FieldContainer>
-              <label>Email</label>
-              <input type="email" />
-              <span>Error message</span>
-            </FieldContainer>
-            <FieldContainer>
-              <label>Password</label>
-              <input type="password" />
-              <span>Error message</span>
-            </FieldContainer>
-            <SubmitButton onClick={() => router.push('/dashboard')}>Login</SubmitButton>
+            <form onSubmit={handleSubmit}>
+              <h3>Login</h3>
+              <FieldContainer>
+                <label>Email</label>
+                <input type="email" value={credentials.email} onChange={({target})=> setCredentials({...credentials, email: target.value})}/>
+                <span>Error message</span>
+              </FieldContainer>
+              <FieldContainer>
+                <label>Password</label>
+                <input type="password" value={credentials.password} onChange={({target})=> setCredentials({...credentials, password: target.value})}/>
+                <span>Error message</span>
+              </FieldContainer>
+              <SubmitButton type="submit">Login</SubmitButton>
+            </form>
           </LoginCard>
         </Container>
       </main>

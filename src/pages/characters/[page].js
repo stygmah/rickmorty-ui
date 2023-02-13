@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import ResultCard from '../../components/ResultCard';
 import { Container, ResultsBox, PaginationButton, PaginationSection } from '../../styles/characters.styled';
 import { nanoid } from 'nanoid';
+import AuthenticatedRoute from '@/components/AuthenticatedRoute';
 
 
 const CharacterList = ( ) => {
@@ -33,7 +34,6 @@ const CharacterList = ( ) => {
         setCharacters(data.results);
         setLoading(false);
       } catch (err) {
-        console.log(err,'::error')
         console.error(err);
       }
     };
@@ -54,6 +54,7 @@ const CharacterList = ( ) => {
   }
 
   return (
+    <AuthenticatedRoute>
       <Container>
         <PaginationSection>
           { page > 1 &&
@@ -81,6 +82,7 @@ const CharacterList = ( ) => {
           }
         </PaginationSection>
       </Container>
+    </AuthenticatedRoute>
   );
 };
 
