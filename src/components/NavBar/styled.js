@@ -28,5 +28,6 @@ export const UserInfoMenu = styled.div`
   button{
     background-color: var(--white);
     border: none;
+    cursor: pointer;
   }
 `;
