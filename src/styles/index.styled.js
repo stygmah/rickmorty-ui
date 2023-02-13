@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   text-align: center;
+  h1{
+    margin-bottom: 16px;
+  }
 `;
 
 export const Button = styled.button`

@@ -15,7 +15,7 @@ const AliveInfo = ({ status }) => {
   return (
     <Container>
       <StatusIndicator color={STATUS_COLORS[status]} />
-      {status === 'Alive' ? <p>Alive</p> : <p>Dead</p>}
+      <p>{status}</p>
     </Container>
   );
 };

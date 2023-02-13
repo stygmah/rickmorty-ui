@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import Head from 'next/head';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { nanoid } from 'nanoid';
@@ -34,6 +35,12 @@ const Character = ({ id }) => {
   // TODO: CHANGE CSS FROM INFOCARD TO THIS PAGE
   return (
     <AuthenticatedRoute>
+        <Head>
+          <title>Character: {character?.name} - Rick and Morty App </title>
+          <meta name="description" content="Rick and morty app" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
         <motion.div
           key={nanoid()}
           initial={{ x: 300, opacity: 0 }}

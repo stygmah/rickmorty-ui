@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import ResultCard from '../../components/ResultCard';
@@ -15,6 +16,7 @@ const CharacterList = ( ) => {
   const [totalPages, setTotalPages] = useState(0);
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [invertAnimation, setInvertAnimation] = useState(false);
 
   useEffect(() => {
     if (router.query.page) {
@@ -43,20 +45,28 @@ const CharacterList = ( ) => {
   }, [page, router]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return null;
   }
 
 
   const paginate = (direction) => {
     if (direction === 'next') {
       router.push(`/characters/${page + 1}`);
+      setInvertAnimation(false);
     } else {
       router.push(`/characters/${page - 1}`);
+      setInvertAnimation(true);
     }
   }
 
   return (
     <AuthenticatedRoute>
+      <Head>
+        <title>Characters page {page} - Rick and Morty App </title>
+        <meta name="description" content="Rick and morty app" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Container>
         <PaginationSection>
           { page > 1 &&
@@ -67,7 +77,7 @@ const CharacterList = ( ) => {
         </PaginationSection>
         <motion.div
           key={nanoid()}
-          initial={{ x: 300, opacity: 0 }}
+          initial={invertAnimation ? { x: -300, opacity: 0 } : { x: 300, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
         >
           <ResultsBox>

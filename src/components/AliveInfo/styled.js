@@ -5,6 +5,7 @@ export const Container = styled.div`
   justify-content: left;
   p{
     margin-left: 8px;
+    text-transform: capitalize;
   }
 `;
 
