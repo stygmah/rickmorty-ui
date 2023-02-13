@@ -32,6 +32,12 @@ export const PaginationButton = styled.button`
   border: none;
   margin: auto;
 
+  transition: all 0.3s ease;
+  cursor: pointer;
+  &:hover{
+    transform: translateY(-1px);
+  }
+
   .arrow {
     border: solid var(--blue);
     border-width: 0 5px 5px 0;

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Head from 'next/head';
 import { Container, LoginCard, FieldContainer, SubmitButton, CreateAccountLink } from '../styles/login.styled';
 import {signIn} from 'next-auth/react';
-import { validateLogin } from '../helpers/validateInput';
+import { invalidLogin } from '../helpers/validateInput';
 
 export default function Login() {
   const router = useRouter();
@@ -51,7 +51,7 @@ export default function Login() {
                 <label>Password</label>
                 <input type="password" value={credentials.password} onChange={({target})=> setCredentials({...credentials, password: target.value})}/>
               </FieldContainer>
-              <SubmitButton type="submit" disabled={validateLogin}>Login</SubmitButton>
+              <SubmitButton type="submit" disabled={invalidLogin(credentials)}>Login</SubmitButton>
             </form>
             <span>{error}</span>
             <CreateAccountLink href={'/register'}>Create account</CreateAccountLink>

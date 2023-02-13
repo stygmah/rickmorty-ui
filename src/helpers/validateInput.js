@@ -22,17 +22,17 @@ export const validateForm = (credentials) => {
 };
 
 
-export const validateLogin = (credentials) => {
+export const invalidLogin = (credentials) => {
   if (!credentials.email) {
-    return false;
+    return true;
   } else if (!EMAIL_REGEX.test(credentials.email)) {
-    return false;
+    return true;
   }
   if (!credentials.password) {
-    return false;
+    return true;
   }
   if (credentials.password.length < 8) {
-    return false;
+    return true;
   }
-  return true;
+  return false;
 };

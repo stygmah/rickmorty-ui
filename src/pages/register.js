@@ -34,7 +34,7 @@ export default function Register() {
 
   const handleRegister = async () => {
     try{
-      const response = await fetch('http://localhost:8080/createUser', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/createUser`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ 

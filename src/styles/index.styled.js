@@ -14,4 +14,9 @@ export const Button = styled.button`
   border-radius: var(--border-radius);
   border: none;
   font-size: 18px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  &:hover{
+    transform: translateY(-1px);
+  }
 `;
