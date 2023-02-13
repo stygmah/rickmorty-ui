@@ -14,4 +14,6 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-This project requires the backend [https://github.com/stygmah/rickmorty-back] (https://github.com/stygmah/rickmorty-back) for authentication
+This project requires the backend [https://github.com/stygmah/rickmorty-back](https://github.com/stygmah/rickmorty-back) for authentication
+
+Added testing with one example due to time constraints
