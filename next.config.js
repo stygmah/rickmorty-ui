@@ -6,7 +6,10 @@ const nextConfig = {
   },
   compiler: {
     styledComponents: true
-  }
+  },
+  serverRuntimeConfig: {
+    secret: 'supersecretstring_2023'
+},
 }
 
 module.exports = nextConfig
