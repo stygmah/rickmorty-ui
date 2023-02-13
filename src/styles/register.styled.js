@@ -1,8 +1,6 @@
 import Card from "@/components/Card";
 import styled from "styled-components";
 
-
-//TODO: Create component with CredentialsBox.FieldContainer
 export const Container = styled.div`
   display: flex;
   justify-content: center;

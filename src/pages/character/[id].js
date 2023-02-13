@@ -32,7 +32,6 @@ const Character = ({ id }) => {
     return null;
   }
 
-  // TODO: CHANGE CSS FROM INFOCARD TO THIS PAGE
   return (
     <AuthenticatedRoute>
         <Head>
