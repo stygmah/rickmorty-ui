@@ -9,8 +9,8 @@ export default function App({ Component, pageProps }) {
   return(
     <SessionProvider session={pageProps.session}>
       <NavBar/>
-      <main className={montserrat.className}>
-          <Component {...pageProps} />
+      <main className={`${montserrat.className} layout` }>
+        <Component {...pageProps} />
       </main>
 
     </SessionProvider>

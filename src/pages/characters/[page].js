@@ -5,6 +5,7 @@ import ResultCard from '../../components/ResultCard';
 import { Container, ResultsBox, PaginationButton, PaginationSection } from '../../styles/characters.styled';
 import { nanoid } from 'nanoid';
 import AuthenticatedRoute from '@/components/AuthenticatedRoute';
+import { RICK_AND_MORTY_API_CHARACTERS } from '@/constants/endpoints';
 
 
 const CharacterList = ( ) => {
@@ -24,7 +25,8 @@ const CharacterList = ( ) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://rickandmortyapi.com/api/character/?page=${page}`);
+        setLoading(true);
+        const response = await fetch(`${RICK_AND_MORTY_API_CHARACTERS}/?page=${page}`);
         if(response.status === 404) {
           router.push('/404');
         }

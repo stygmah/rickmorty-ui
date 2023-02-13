@@ -1,38 +1,49 @@
 import React, { useState, useEffect } from 'react';
-import InfoCard from '@/components/InfoCard';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { nanoid } from 'nanoid';
+import { RICK_AND_MORTY_API_CHARACTERS } from '@/constants/endpoints';
+import AuthenticatedRoute from '@/components/AuthenticatedRoute';
+import InfoCard from '@/components/InfoCard';
 
 const Character = ({ id }) => {
   const [character, setCharacter] = useState({});
+  const [loading, setLoading] = useState(true);
   const router= useRouter();
 
   useEffect(() => {
-
     const fetchCharacter = async () => {
-      const response = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
+      setLoading(true);
+      const response = await fetch(`${RICK_AND_MORTY_API_CHARACTERS}/${id}`);
       if(response.status === 404) {
         router.push('/404');
       }
 
       const data = await response.json();
+      setLoading(false);
       setCharacter(data);
     };
 
     fetchCharacter();
   }, [id, router]);
+
+  if (loading) {
+    return null;
+  }
+
   // TODO: CHANGE CSS FROM INFOCARD TO THIS PAGE
   return (
-    <motion.div
-      key={nanoid()}
-      initial={{ x: 300, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-    >
-      <InfoCard
-        character={character}
-      />
-    </motion.div>
+    <AuthenticatedRoute>
+        <motion.div
+          key={nanoid()}
+          initial={{ x: 300, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+        >
+          <InfoCard
+            character={character}
+          />
+        </motion.div>
+    </AuthenticatedRoute>
   );
 };
 

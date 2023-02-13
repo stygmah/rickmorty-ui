@@ -1,6 +1,6 @@
 import Card from "@/components/Card";
 import styled from "styled-components";
-
+import Link from "next/link";
 
 //TODO: Create component with CredentialsBox.FieldContainer
 export const Container = styled.div`
@@ -13,9 +13,17 @@ export const Container = styled.div`
 export const LoginCard = styled(Card)`
   display: inline-block;
   padding: 32px;
+  position: relative;
   h3{
     text-align: center;
     margin-bottom: 32px;
+  }
+  span{
+    display: block;
+    font-size: 12px;
+    color: #f00;
+    position: absolute;
+    left: 74px;
   }
 `;
 export const FieldContainer = styled.div`
@@ -37,12 +45,6 @@ export const FieldContainer = styled.div`
     box-shadow:inset 0 0 10px 1px rgba(0,0,0,0.1);
     background: #fff;
   }
-  span{
-    display: block;
-    font-size: 12px;
-    color: #f00;
-    position: absolute;
-  }
 `;
 
 export const SubmitButton = styled.button`
@@ -54,3 +56,13 @@ export const SubmitButton = styled.button`
   width: 100%;
   margin-bottom: 12px;
 `;
+
+export const CreateAccountLink = styled(Link)`
+  margin-top: 32px;
+  font-size: 12px;
+  text-decoration: underline;
+  display: inline-block;
+  text-align: center;
+  color: #aaa;
+  width: 100%;
+`

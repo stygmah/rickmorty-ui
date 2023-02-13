@@ -31,3 +31,8 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.layout{
+  padding: 124px 20vw 0 20vw;
+  height: 100vh;
+}

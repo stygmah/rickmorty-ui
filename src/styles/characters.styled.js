@@ -47,11 +47,6 @@ export const PaginationButton = styled.button`
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
   }
-  &.right{
-    transform: translateX(-10vw);
-  }
-  &.left{
-    transform: translateX(10vw);
-  }
+
 
 `;

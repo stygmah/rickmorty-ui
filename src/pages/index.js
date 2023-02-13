@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { Inter } from '@next/font/google';
 import AuthenticatedRoute from '@/components/AuthenticatedRoute';
+import { Container, Button } from '@/styles/index.styled';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,11 +17,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <Container>
         <h1>Welcome to Rick & Morty webapp</h1>
-        <p>Bla bla bla</p>
-        <button onClick={()=>router.push('/characters/1')}>Browse Characters</button>
-      </main>
+        <p>A simple way to browse Rick and Morty characters from all the multiverse</p>
+        <Button onClick={()=>router.push('/characters/1')}>Browse Characters</Button>
+      </Container>
     </AuthenticatedRoute>
   )
 }

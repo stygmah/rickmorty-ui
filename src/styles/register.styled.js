@@ -20,7 +20,7 @@ export const LoginCard = styled(Card)`
 `;
 export const FieldContainer = styled.div`
   width: 20vw;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   position: relative;
   label{
     display: block;
@@ -40,8 +40,10 @@ export const FieldContainer = styled.div`
   span{
     display: block;
     font-size: 12px;
+    color: #aaa;
+  }
+  .error{
     color: #f00;
-    position: absolute;
   }
 `;
 
@@ -53,4 +55,12 @@ export const SubmitButton = styled.button`
   border-radius: 4px;
   width: 100%;
   margin-bottom: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  &:disabled{
+    opacity: 0.3;
+  }
+  &:hover{
+    transform: translateY(-1px);
+  }
 `;

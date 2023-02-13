@@ -5,7 +5,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20vh 20vw;
+  padding: 0 20vw;
 
 `;
 
