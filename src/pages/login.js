@@ -1,14 +1,23 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { Container, LoginCard, FieldContainer, SubmitButton, CreateAccountLink } from '../styles/login.styled';
 import {signIn} from 'next-auth/react';
 import { invalidLogin } from '../helpers/validateInput';
+import { useSession } from 'next-auth/react';
+import { AUTH_STATUS } from '@/constants/nextauth';
 
 export default function Login() {
   const router = useRouter();
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const [error, setError] = useState(null);
+  const { status } = useSession();
+
+  useEffect(() => {
+    if (status !== AUTH_STATUS.UNAUTHENTICATED) {
+      router.push('/');
+    }
+  }, [status]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,6 +38,8 @@ export default function Login() {
       console.error(error)
     }
   }
+
+  if(status !== AUTH_STATUS.UNAUTHENTICATED) return null;
 
   return (
     <>

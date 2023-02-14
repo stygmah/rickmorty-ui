@@ -33,6 +33,7 @@ const authOptions = {
   pages: {
     signIn: '/login',
   },
+  secret: "gn/at8PhCZPuifFen2cajfByhmZgV4VONysYOadsDZU=",
 };
 
 export default NextAuth(authOptions);

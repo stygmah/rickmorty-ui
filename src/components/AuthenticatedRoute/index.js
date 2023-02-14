@@ -7,12 +7,15 @@ import { AUTH_STATUS } from '../../constants/nextauth';
 const AuthenticatedRoute = ({ children }) => {
   const { status } = useSession();
   const router = useRouter();
+
+  const isAuthenticated = () => status === AUTH_STATUS.AUTHENTICATED;
+
   useEffect(() => {
-    if (status !== AUTH_STATUS.AUTHENTICATED) {
+    if (!isAuthenticated()) {
       router.push('/login');
     }
   }, [status]);
-  return <>{children}</>;
+  return isAuthenticated() ? <>{children}</> : null;
 };
 
 AuthenticatedRoute.propTypes = {
