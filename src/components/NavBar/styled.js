@@ -13,6 +13,7 @@ export const Container = styled.div`
 export const UserInfo = styled.button`
   background-color: var(--white);
   border: none;
+  cursor: pointer;
 
 `;
 export const UserInfoMenu = styled.div`
