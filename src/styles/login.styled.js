@@ -22,7 +22,7 @@ export const LoginCard = styled(Card)`
     font-size: 12px;
     color: #f00;
     position: absolute;
-    left: 74px;
+    left: 7vw;
   }
 `;
 export const FieldContainer = styled.div`
